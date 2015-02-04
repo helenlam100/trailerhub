@@ -1,0 +1,14 @@
+
+<h1>Trailers</h1>
+  <%= form_tag url_for(:controller => 'trailers', :action => 'create'), method: 'post', class: 'search-form' do %>
+  <%= label_tag do %>
+Search for trailers: <%= search_field_tag :query %>
+  <% end %>
+    <%= submit_tag :search %>
+  <% end %>
+
+<% if @trailer_url %>
+<div id="results">
+  <iframe width="800" height="415" src=<%= @trailer_url %>></iframe>
+</div>
+<% end %>
