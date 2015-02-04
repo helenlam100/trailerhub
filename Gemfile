@@ -37,6 +37,8 @@ gem 'youtube_it'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+gem 'devise'
+
 
 
 # Use ActiveModel has_secure_password
