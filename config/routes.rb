@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :trailers
   post '/' => 'trailers#create'
 
+  post '/reviews' => 'reviews#create'
+
 
 
 

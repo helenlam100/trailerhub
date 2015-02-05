@@ -11,4 +11,22 @@ Search for trailers: <%= search_field_tag :query %>
 <div id="results">
   <iframe width="800" height="415" src=<%= @trailer_url %>></iframe>
 </div>
+
+<form>
+  <label for="title">Title:</label>
+
+  <input type="text" id="title">
+
+  <textarea rows="8" cols="40" id="review"></textarea>
+
+  <button id="submit">Submit Review</button>
+
+<div id="<%= @trailer.id %>" class= "trailer_id">
+  <% @review.each do |review| %>
+      <%= review.title %>
+      <%= review.review %>
+      <%= review.created_at %>
+  <% end %>
+</div>
+
 <% end %>
