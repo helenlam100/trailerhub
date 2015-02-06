@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   root 'trailers#index'
   resources :trailers
   post '/' => 'trailers#create'
-
   post '/reviews' => 'reviews#create'
 
 

@@ -1,32 +1,75 @@
+<!-- header -->
 
-<h1>Trailers</h1>
-  <%= form_tag url_for(:controller => 'trailers', :action => 'create'), method: 'post', class: 'search-form' do %>
-  <%= label_tag do %>
-Search for trailers: <%= search_field_tag :query %>
-  <% end %>
-    <%= submit_tag :search %>
-  <% end %>
-
-<% if @trailer_url %>
-<div id="results">
-  <iframe width="800" height="415" src=<%= @trailer_url %>></iframe>
+<div class="sizer">
+  <div class="ui large header">
+    <h3 class="ui center aligned header">
+      Trailer Hub
+      <p>
+        <%= form_tag url_for(:controller => 'trailers', :action => 'create'), method: 'post', class: 'search-form' do %>
+        <%= label_tag do %>
+        Search for trailers: <%= search_field_tag :query %>
+        <% end %>
+        <div class="ui button">
+        <%= submit_tag :submit %>
+        </div>
+        <% end %>
+      </p>
+    </h3>
+  </div>
 </div>
 
-<form>
-  <label for="title">Title:</label>
+<!-- Right grid begins -->
 
-  <input type="text" id="title">
+<div class="ui right aligned grid">
+  <div class="right floated left aligned ten wide column">
+    <div class="ui segment">
+      <% if @trailer_url %>
+      <div id="results">
+        <iframe width="770" height="590" src=<%= @trailer_url %>></iframe>
+      </div>
+    </div>
+  </div>
 
-  <textarea rows="8" cols="40" id="review"></textarea>
 
-  <button id="submit">Submit Review</button>
+  <!-- Left grid begins -->
+  <div class="left floated right aligned six wide column">
+    <div class="ui segment">
 
-<div id="<%= @trailer.id %>" class= "trailer_id">
-  <% @review.each do |review| %>
-      <%= review.title %>
-      <%= review.review %>
-      <%= review.created_at %>
-  <% end %>
+      <div class="ui form">
+        <form>
+          <div class="ui pointing below label">
+            <label for="title">Title:</label>
+          </div>
+
+          <div class="ui input">
+            <input type="text" id="title">
+          </div>
+        </form>
+      </div>
+
+      <div class="ui form">
+        <div class="field">
+
+          <div class="ui pointing below label">
+            <label>Review</label>
+          </div>
+          <textarea id="review"></textarea>
+        </div>
+      </div>
+
+      <div class="ui button">
+        <button id="submit">Submit Review</button>
+      </div>
+
+      <div id="<%= @trailer.id %>" class= "trailer_id">
+        <% @review.each do |review| %>
+        <p><%= review.title %></p>
+        <p><%= review.review %></p>
+        <p><%= review.created_at %></p>
+        <% end %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>
-
-<% end %>
